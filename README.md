@@ -28,6 +28,10 @@ name: Count Lines of Code
 on:
   pull_request:
 
+permissions: # important
+  contents: write
+  pull-requests: write
+
 jobs:
   loc-report:
     runs-on: ubuntu-latest
@@ -37,10 +41,12 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Run LOC Reporter
-        uses: alan890104/ton-loc-reporter@v1
+        uses: alan890104/ton-loc-reporter@v1.0.0
         with:
           directory: "./contracts"
           language: ".fc"
           ignore-folders: "mock,imports"
           ignore-files: "example.fc,pool/utils.fc"
+        env: # important
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
