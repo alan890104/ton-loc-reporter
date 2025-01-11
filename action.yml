@@ -1,8 +1,8 @@
 name: TON LOC Reporter
 
-description: "Report Lines of Code (LOC) statistics for TON smart contract projects and post results to pull requests."
+description: "Reports Lines of Code (LOC) statistics and adds comments to Pull Requests."
 
-author: "Alankingdom"
+author: "alan890104"
 
 inputs:
   directory:
@@ -24,7 +24,6 @@ inputs:
 runs:
   using: "docker"
   image: "./Dockerfile"
-
   args:
     - --directory
     - ${{ inputs.directory }}

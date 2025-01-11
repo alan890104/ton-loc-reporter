@@ -105,9 +105,10 @@ def post_comment_to_pr(message):
     with open(event_path, "r") as f:
         event = json.load(f)
 
-    pr_number = event.get("pull_request", {}).get("number")
+    # Determine the PR number or issue number
+    pr_number = event.get("pull_request", {}).get("number") or event.get("issue", {}).get("number")
     if not pr_number:
-        print("This action must be triggered by a pull request event.")
+        print("This action must be triggered by a pull request or issue event.")
         return
 
     url = f"https://api.github.com/repos/{repo}/issues/{pr_number}/comments"
