@@ -1,0 +1,42 @@
+name: TON LOC Reporter
+
+description: "Report Lines of Code (LOC) statistics for TON smart contract projects and post results to pull requests."
+
+author: "Alankingdom"
+
+inputs:
+  directory:
+    description: "The directory to scan for code files."
+    required: true
+    default: "."
+  language:
+    description: "The programming language to analyze (e.g., .fc, .tolk)."
+    required: true
+  ignore-folders:
+    description: "Comma-separated list of folders to ignore, relative to the directory."
+    required: false
+    default: ""
+  ignore-files:
+    description: "Comma-separated list of files to ignore, relative to the directory."
+    required: false
+    default: ""
+
+runs:
+  using: "docker"
+  image: "python:3.9"
+
+  args:
+    - python
+    - /count_loc.py
+    - --directory
+    - ${{ inputs.directory }}
+    - --language
+    - ${{ inputs.language }}
+    - --ignore-folders
+    - ${{ inputs.ignore-folders }}
+    - --ignore-files
+    - ${{ inputs.ignore-files }}
+
+branding:
+  icon: "code"
+  color: "blue"
