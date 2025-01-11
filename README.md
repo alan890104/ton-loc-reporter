@@ -37,7 +37,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Run LOC Reporter
-        uses: alan890104/ton-loc-reporter-action@v1.0
+        uses: alan890104/ton-loc-reporter@v1
         with:
           directory: "./contracts"
           language: ".fc"
