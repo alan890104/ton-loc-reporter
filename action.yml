@@ -26,8 +26,6 @@ runs:
   image: "./Dockerfile"
 
   args:
-    - python
-    - /count_loc.py
     - --directory
     - ${{ inputs.directory }}
     - --language
