@@ -23,7 +23,7 @@ inputs:
 
 runs:
   using: "docker"
-  image: "python:3.9"
+  image: "./Dockerfile"
 
   args:
     - python
